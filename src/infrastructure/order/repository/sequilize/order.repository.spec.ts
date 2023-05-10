@@ -19,7 +19,7 @@ describe("Order repository test", () => {
     sequelize = new Sequelize({
       dialect: "sqlite",
       storage: ":memory:",
-      logging: true,
+      logging: false,
       sync: { force: true },
     });
 
@@ -103,7 +103,7 @@ describe("Order repository test", () => {
     }).rejects.toThrow("Cannot update order");
   });
 
-  it.only("should update a order", async () => {
+  it("should update a order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("789", "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
@@ -175,8 +175,6 @@ describe("Order repository test", () => {
       include: ["items"],
     });
 
-    console.warn(orderModelUpdated.toJSON());
-
     expect(orderModelUpdated.toJSON()).toStrictEqual({
       id: order.id,
       customer_id: customer.id,
@@ -191,16 +189,14 @@ describe("Order repository test", () => {
           order_id: order.id,
           product_id: product.id,
         },
-        /*        
-                {
-                  id: orderItem2.id,
-                  name: orderItem2.name,
-                  price: orderItem2.price,
-                  quantity: orderItem2.quantity,
-                  order_id: order.id,
-                  product_id: product2.id,
-                },
-        */
+        {
+          id: orderItem2.id,
+          name: orderItem2.name,
+          price: orderItem2.price,
+          quantity: orderItem2.quantity,
+          order_id: order.id,
+          product_id: product2.id,
+        },
       ]
     });
   });
