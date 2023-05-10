@@ -19,3 +19,14 @@ Outro conceito importante no DDD é o de agregados. Um agregado é um grupo de o
 Além disso, o DDD também promove o uso de padrões de design como Value Objects (objetos de valor), Entities (entidades), Services (serviços) e Repositories (repositórios), que são responsáveis por representar e manipular os conceitos do domínio de forma eficaz.
 
 Em resumo, o desenvolvimento orientado a DDD é uma abordagem de design de software que coloca o domínio do problema em primeiro plano, buscando uma melhor compreensão e representação do mesmo. Isso resulta em sistemas mais alinhados com as necessidades do negócio, melhorando a qualidade e a manutenibilidade do software.
+
+## Configurando projeto
+Instalando as dependências
+```sh
+npm install
+```
+
+Rodando os testes unitários
+```sh
+npm run test
+```
