@@ -7,6 +7,9 @@ import ProductCreatedEvent from "../../product/event/product-created.event";
 import EventDispatcher from "./event-dispatcher";
 import { v4 as uuid } from "uuid";
 import CustomerCreatedEvent from "../../customer/event/customer-created.event";
+import CustomerUpdatedEvent from "../../customer/event/customer-updated.event";
+
+
 
 
 
@@ -131,6 +134,7 @@ describe("Domain events tests for customer", () => {
     eventDispatcher.notify(customerCreatedEvent);
 
     expect(spyEventHandler).toHaveBeenCalled();
+    eventDispatcher.unregisterAll();
 
     const address2 = new Address("Street 2", 2, "12345-678", "City");
     customer.changeAddress(address2);
@@ -138,16 +142,14 @@ describe("Domain events tests for customer", () => {
     const eventHandler2 = new ExecuteConsoleLog2WhenCustumerIsCreatedHandler();
     const spyEventHandler2 = jest.spyOn(eventHandler2, "handle");
 
-    eventDispatcher.unregisterAll();
-    eventDispatcher.register("CustomerCreatedEvent", eventHandler2);
+    eventDispatcher.register("CustomerUpdatedEvent", eventHandler2);
 
-    expect(eventDispatcher.getEventHandlers["CustomerCreatedEvent"]).toBeDefined();
-    expect(eventDispatcher.getEventHandlers["CustomerCreatedEvent"].length).toBe(1);
-    expect(eventDispatcher.getEventHandlers["CustomerCreatedEvent"][0]).toMatchObject(eventHandler2);
+    expect(eventDispatcher.getEventHandlers["CustomerUpdatedEvent"]).toBeDefined();
+    expect(eventDispatcher.getEventHandlers["CustomerUpdatedEvent"].length).toBe(1);
+    expect(eventDispatcher.getEventHandlers["CustomerUpdatedEvent"][0]).toMatchObject(eventHandler2);
 
-
-    const customerCreatedEvent2 = new CustomerCreatedEvent(customer);
-    eventDispatcher.notify(customerCreatedEvent2);
+    const customerUpdatedEvent = new CustomerUpdatedEvent(customer);
+    eventDispatcher.notify(customerUpdatedEvent);
 
     expect(spyEventHandler2).toHaveBeenCalled();
   })
