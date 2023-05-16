@@ -39,11 +39,9 @@ Resultado o último teste executado
 > @ tsc /home/tayron/Arquivos/Projetos/Estudos/ddd-patterns-typescript
 > tsc "--noEmit"
 
- PASS  src/infrastructure/order/repository/sequilize/order.repository.spec.ts
  PASS  src/infrastructure/customer/repository/sequelize/customer.repository.spec.ts
  PASS  src/infrastructure/product/repository/sequelize/product.repository.spec.ts
- PASS  src/domain/product/entity/product.spec.ts
- PASS  src/domain/checkout/entity/order.spec.ts
+ PASS  src/infrastructure/order/repository/sequilize/order.repository.spec.ts
  PASS  src/domain/@shared/event/event-dispatcher.spec.ts
   ● Console
 
@@ -56,32 +54,34 @@ Resultado o último teste executado
     console.log
       Esse é o primeiro console.log do evento: CustomerCreated
 
-      at ExecuteConsoleLog1WhenCustumerIsCreatedHandler.handle (src/domain/customer/event/handler/execute-console-log-1-when-custumer-is-created.handler.ts:8:13)
+      at ExecuteConsoleLogWhenCustomerIsCreatedHandler.handle (src/domain/customer/event/handler/execute-console-log-when-customer-is-created.handler.ts:8:13)
           at Array.forEach (<anonymous>)
 
     console.log
-      Esse é o segundo console.log do evento: CustomerCreated
+      Esse é o segundo console.log do evento: CustomerUpdatedEvent
 
-      at ExecuteConsoleLog1WhenCustumerIsCreatedHandler.handle (src/domain/customer/event/handler/execute-console-log-2-when-custumer-is-created.handler.ts:8:13)
+      at ExecuteConsoleLogWhenCustomerIsUpdatedHandler.handle (src/domain/customer/event/handler/execute-console-log-when-customer-is-updated.handler.ts:8:13)
           at Array.forEach (<anonymous>)
 
     console.log
-      Endereço do cliente: 3c7a816f-c1bc-49d5-86c6-d30066b4ff4d, John foi alterado para: Street 2,2, 
+      Endereço do cliente: cd0d4249-05a5-4dcb-912c-323ab6e3eb73, John foi alterado para: Street 2,2, 
             City - 12345-678
 
-      at ExecuteConsoleLog1WhenCustumerIsCreatedHandler.handle (src/domain/customer/event/handler/execute-console-log-2-when-custumer-is-created.handler.ts:14:13)
+      at ExecuteConsoleLogWhenCustomerAddressIsUpdatedHandler.handle (src/domain/customer/event/handler/execute-console-log-when-customer-address-is-updated.handler.ts:12:13)
           at Array.forEach (<anonymous>)
 
  PASS  src/domain/customer/entity/customer.spec.ts
- PASS  src/domain/product/factory/product.factory.spec.ts
- PASS  src/domain/checkout/factory/order.factory.spec.ts
- PASS  src/domain/checkout/service/order.service.spec.ts
+ PASS  src/domain/checkout/entity/order.spec.ts
+ PASS  src/domain/product/entity/product.spec.ts
  PASS  src/domain/customer/factory/customer.factory.spec.ts
+ PASS  src/domain/product/factory/product.factory.spec.ts
+ PASS  src/domain/checkout/service/order.service.spec.ts
+ PASS  src/domain/checkout/factory/order.factory.spec.ts
  PASS  src/domain/product/service/product.service.spec.ts
 
 Test Suites: 12 passed, 12 total
 Tests:       6 skipped, 43 passed, 49 total
 Snapshots:   0 total
-Time:        2.633 s
+Time:        2.547 s
 Ran all test suites.
 ```
